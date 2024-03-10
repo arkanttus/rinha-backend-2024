@@ -6,10 +6,12 @@ defmodule RinhaBackend.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      Repo,
+      RinhaBackend.Repo,
       {Bandit, plug: Server, port: 3000}
     ]
 
+    :ok = OpentelemetryEcto.setup([:rinha_backend, :repo])
+    :ok = OpentelemetryBandit.setup()
     # System.fetch_env!("HTTP_SERVER_PORT")
 
     opts = [strategy: :one_for_one, name: RinhaBackend.Supervisor]

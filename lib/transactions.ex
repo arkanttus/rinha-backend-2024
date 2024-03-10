@@ -1,4 +1,5 @@
 defmodule Transactions do
+  alias RinhaBackend.Repo
   alias Transactions.Transaction
 
   @type client_info :: %{limite: integer(), saldo: integer()}

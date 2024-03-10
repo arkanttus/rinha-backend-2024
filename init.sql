@@ -5,9 +5,16 @@ CREATE TABLE
     "balance" INTEGER NOT NULL DEFAULT 0
   );
 
+CREATE OR REPLACE FUNCTION validar_saldo()
+RETURNS BOOLEAN AS $$
+BEGIN
+    RETURN NEW.balance >= NEW.limit * -1;
+END;
+$$ LANGUAGE plpgsql;
+
 ALTER TABLE
   clients
-ADD CONSTRAINT limit_balance_check CHECK (balance >= "limit" * -1);
+ADD CONSTRAINT limit_balance_check CHECK (validar_saldo());
 
 CREATE UNLOGGED TABLE
   transactions (

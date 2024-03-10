@@ -21,7 +21,7 @@ defmodule RinhaBackend.MixProject do
   end
 
   defp extra_applications(:prod),
-    do: [:logger]
+    do: [:logger, :tls_certificate_check, :opentelemetry_exporter, :opentelemetry]
 
   defp extra_applications(_),
     do: extra_applications(:prod) ++ [:observer, :wx, :runtime_tools]
@@ -39,7 +39,13 @@ defmodule RinhaBackend.MixProject do
       {:bandit, "~> 1.2"},
       {:jason, "~> 1.4"},
       {:ecto_sql, "~> 3.11"},
-      {:postgrex, ">= 0.0.0"}
+      {:postgrex, ">= 0.0.0"},
+
+      # Telemetry
+      {:opentelemetry, "~> 1.3.1"},
+      {:opentelemetry_exporter, "~> 1.6.0"},
+      {:opentelemetry_ecto, "~> 1.2.0"},
+      {:opentelemetry_bandit, "~> 0.1.4"}
     ]
   end
 end

@@ -2,6 +2,7 @@ defmodule Clients do
   import Ecto.Query
 
   alias Clients.Client
+  alias RinhaBackend.Repo
   alias Transactions.Transaction
 
   @type client_statement :: %{saldo: map(), ultimas_transacoes: list(map())}

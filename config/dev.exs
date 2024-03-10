@@ -1,6 +1,6 @@
 import Config
 
-config :rinha_backend, Repo,
+config :rinha_backend, RinhaBackend.Repo,
   database: "rinha",
   username: "rinha",
   password: "rinha",
