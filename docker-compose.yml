@@ -10,20 +10,12 @@ services:
     ports:
       - "3001:3000"
     environment:
-      ERL_MAX_PORTS: 2048
-      HTTP_SERVER_PORT: 3000
       DB_NAME: "rinha"
       DB_USERNAME: "rinha"
       DB_PASS: "rinha"
       DB_HOSTNAME: "db"
       DB_PORT: 5432
-      DB_POOL_SIZE: 50
-    # healthcheck:
-    #   test: curl --fail http://localhost:3000/ || exit 1
-    #   interval: 40s
-    #   timeout: 30s
-    #   retries: 3
-    #   start_period: 60s
+      DB_POOL_SIZE: 70
     depends_on:
       db:
         condition: service_healthy
@@ -76,10 +68,10 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-    # ulimits:
-    #   nofile:
-    #     soft: 100000
-    #     hard: 100000
+    ulimits:
+      nofile:
+        soft: 100000
+        hard: 100000
     deploy:
       resources:
         limits:

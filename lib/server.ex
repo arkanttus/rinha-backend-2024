@@ -11,10 +11,6 @@ defmodule Server do
 
   plug(:dispatch)
 
-  get "/" do
-    send_resp(conn, 200, "world")
-  end
-
   post "/clientes/:client_id/transacoes" do
     params = Map.put(conn.body_params, "client_id", String.to_integer(client_id))
 

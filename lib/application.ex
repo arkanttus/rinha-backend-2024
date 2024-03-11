@@ -10,9 +10,7 @@ defmodule RinhaBackend.Application do
       {Bandit, plug: Server, port: 3000}
     ]
 
-    # System.fetch_env!("HTTP_SERVER_PORT")
-
     opts = [strategy: :one_for_one, name: RinhaBackend.Supervisor]
-    Supervisor.start_link(children, opts) |> IO.inspect()
+    Supervisor.start_link(children, opts)
   end
 end
