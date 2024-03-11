@@ -1,10 +1,8 @@
 version: "3.5"
 
 services:
-  api1:
-    # image: arkanttus/rinha-backend-2024:latest
-    &api
-    build: ./
+  api1: &api
+    image: arkanttus/rinha-backend-2024:latest
     container_name: api1
     hostname: api1
     ports:
